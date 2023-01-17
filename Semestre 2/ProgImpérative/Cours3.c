@@ -1,5 +1,7 @@
 #include<stdio.h>
 #include <stdbool.h>
+#include<stdlib.h>
+#include <time.h>
 /**
  * Exercice : Affichage d'un menu à l'utilisateur
  * Proposer à l'utilisateur un menu à 4 entrées 1, 2, 3 et 4 pour sortir du programme.
@@ -13,7 +15,7 @@
  * for(index initialisé ; condition à atteindre pour mettre fin à la répétition ; pas de la boucle)
 */
 
-int main(){
+/**int main(){
     bool fin=false;
     printf("Bonjour, veuillez entrer une option : \n");
     while(fin!=true){
@@ -53,3 +55,31 @@ int main(){
     }
     return 0;
     }
+*/
+
+/**
+ * reprendre l'exercice du nombre magique et intégrer une boucle afin de permettre à l'utilisateur de recommencer 
+ * tant qu'il n'a pas trouvé le nombre. Intégrer un compteur de tentatives pour indiquer à la fin, le nombre de tentatives 
+ * utilisées pour atteindre le nombre magique.
+*/
+int main(){
+    srand(time(NULL));
+    int NbAleatoire = rand()%11;
+    int NbChoisis;
+    int NbTentative=0;
+    bool fin=false;
+    printf("%d\n", NbAleatoire);
+    printf("Essaie de deviner le nombre entre 0 et 10 au quel je pense, pour ça saisie un nombre :\n");
+    scanf("%d", &NbChoisis);
+    do {
+    NbTentative++;
+    if(NbAleatoire==NbChoisis){
+        fin=true;
+    }else{
+    printf("Non ce n'est pas ça ré-essaie : \n");
+    scanf("%d", &NbChoisis);
+    }
+    }while(fin==false);
+    printf("Bravo, tu as reussi à le trouver en %d tentatives", NbTentative);
+    return 0;
+}
